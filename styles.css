@@ -1,3 +1,15 @@
 #library {
     text-align: left;
 }
+
+form label {
+    display: block;
+}
+
+form div {
+    display: inline-block;
+}
+
+input[type="submit"] {
+    display: block;
+}
