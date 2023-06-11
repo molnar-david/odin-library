@@ -3,7 +3,9 @@ let myLibraryTable = document.getElementById("library");
 
 document.getElementById("add-book-form").addEventListener("submit", (event) => {
     event.preventDefault();
-    const formData = new FormData(document.getElementById("add-book-form"));
+    const myForm = document.getElementById("add-book-form");
+    const formData = new FormData(myForm);
+    myForm.reset();
 
     // Convert 'on' to true and null to false
     const newBook = new Book(formData.get("title"), formData.get("author"), formData.get("is-read") ? true : false);
