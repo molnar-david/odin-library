@@ -9,30 +9,35 @@
     <script src="script.js" defer></script>
 </head>
 <body>
-    <h1>My library</h1>
-    <form action="#" method="post" id="add-book-form">
-        <div>
-            <label for="title">Title:</label>
-            <input type="text" id="title" name="title">
-        </div>
-        <div>
-            <label for="author">Author:</label>
-            <input type="text" id="author" name="author">
-        </div>
-        <div>
-            <label for="is-read">Read?</label>
-            <input type="checkbox" id="is-read" name="is-read">
-        </div>
-        <input type="submit" value="Add book" id="add-book-btn">
-    </form>
-    <table id="library">
-        <thead>
-            <tr>
-                <th scope="col">Title</th>
-                <th scope="col">Author</th>
-                <th scope="col">Status</th>
-            </tr>
-        </thead>
-    </table>
+    <div id="site-container">
+        <h1>My library</h1>
+        <form action="#" method="post" id="add-book-form">
+            <div class="form-flex">
+                <div class="stretch">
+                    <label for="title">Title:</label>
+                    <input type="text" id="title" name="title" required>
+                </div>
+                <div class="stretch">
+                    <label for="author">Author:</label>
+                    <input type="text" id="author" name="author" required>
+                </div>
+                <div class="right">
+                    <label for="is-read">Read?</label>
+                    <input type="checkbox" id="is-read" name="is-read">
+                </div>
+            </div>
+            <input type="submit" value="Add book" id="add-book-btn">
+        </form>
+        <table id="library">
+            <thead>
+                <tr>
+                    <th scope="col">Title</th>
+                    <th scope="col">Author</th>
+                    <th scope="col">Status</th>
+                    <th></th>
+                </tr>
+            </thead>
+        </table>
+    </div>
 </body>
 </html>

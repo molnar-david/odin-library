@@ -1,15 +1,69 @@
-#library {
-    text-align: left;
+#site-container {
+    display: grid;
+    grid-auto-flow: row;
+    justify-content: center;
+    align-content: center;
+    grid-auto-columns: 60vw;
+    gap: 24px;
 }
 
-form label {
-    display: block;
+h1 {
+    text-align: center;
+}
+
+.form-flex {
+    display: flex;
+    gap: 24px;
+    margin-bottom: 8px;
+}
+
+.stretch {
+    flex: 1;
+}
+
+.right {
+    text-align: right;
+}
+
+input[type="text"] {
+    width: 100%;
+}
+
+input[type="checkbox"] {
+    padding-right: 0;
 }
 
 form div {
     display: inline-block;
 }
 
+form label {
+    display: block;
+}
+
 input[type="submit"] {
     display: block;
+}
+
+#library {
+    text-align: left;
+}
+
+.is-read-btn,
+.remove-btn {
+    width: 80px;
+}
+
+th:nth-child(-n+2),
+td:nth-child(-n+2) {
+    width: 50%;
+}
+
+th:nth-child(n+3),
+td:nth-child(n+3) {
+    min-width: 80px;
+}
+
+td:last-child {
+    text-align: right;
 }

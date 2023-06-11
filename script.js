@@ -14,7 +14,9 @@ document.getElementById("add-book-form").addEventListener("submit", (event) => {
     if (myLibrary.some((element) => element.title === newBook.title && element.author === newBook.author)) {
         alert("Book already added!");
     } else {
-        addBookToLibrary(newBook);
+        if (newBook.title && newBook.author) {
+            addBookToLibrary(newBook);
+        }
     }
 });
 
