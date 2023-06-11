@@ -22,18 +22,35 @@ function Book(title, author, isRead) {
     this.isRead = isRead;
 }
 
+function toggleIsRead(index) {
+    let book = myLibrary[index];
+    book.isRead = !book.isRead;
+
+    let isReadBtns = document.getElementsByClassName("is-read-btn");
+    for (let isReadBtn of isReadBtns) {
+        if (isReadBtn.dataset.index === index) {
+            isReadBtn.textContent = book.isRead ? "Read" : "Not read";
+        }
+    }
+}
+
 function removeBookFromLibrary(index) {
     myLibraryTable.deleteRow(+index + 1);                // Row 0 is header row in our table
     myLibrary.splice(index, 1);
 
     let removeBtns = document.getElementsByClassName("remove-btn");
+    let isReadBtns = document.getElementsByClassName("is-read-btn");
 
     // Reassign indices
     let newIndex = 0;
     for (let removeBtn of removeBtns) {
         removeBtn.dataset.index = newIndex++;
     }
-    console.log(removeBtns);
+
+    newIndex = 0;
+    for (let isReadBtn of isReadBtns) {
+        isReadBtn.dataset.index = newIndex++;
+    }
 }
 
 function addBookToLibrary(book) {
@@ -41,7 +58,12 @@ function addBookToLibrary(book) {
         let newRow = myLibraryTable.insertRow();
         let title = newRow.insertCell();
         let author = newRow.insertCell();
-        let isRead = newRow.insertCell();
+
+        let isReadBtn = document.createElement("button");
+        isReadBtn.classList.add("is-read-btn");
+        isReadBtn.textContent = book.isRead ? "Read" : "Not read";
+        isReadBtn.dataset.index = myLibrary.length;
+        isReadBtn.addEventListener("click", (event) => toggleIsRead(event.target.dataset.index));
 
         let removeBtn = document.createElement("button");
         removeBtn.classList.add("remove-btn");
@@ -51,7 +73,7 @@ function addBookToLibrary(book) {
 
         title.appendChild(document.createTextNode(book.title));
         author.appendChild(document.createTextNode(book.author));
-        isRead.appendChild(document.createTextNode(book.isRead ? "Read" : "Not read"));
+        newRow.insertCell().appendChild(isReadBtn);
         newRow.insertCell().appendChild(removeBtn);
 
         myLibrary.push(book);
