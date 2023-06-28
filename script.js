@@ -5,7 +5,6 @@ document.getElementById("add-book-form").addEventListener("submit", (event) => {
     event.preventDefault();
     const myForm = document.getElementById("add-book-form");
     const formData = new FormData(myForm);
-    myForm.reset();
 
     // Convert 'on' to true and null to false
     const newBook = new Book(formData.get("title"), formData.get("author"), formData.get("is-read") ? true : false);
@@ -17,13 +16,16 @@ document.getElementById("add-book-form").addEventListener("submit", (event) => {
         if (newBook.title && newBook.author) {
             addBookToLibrary(newBook);
         }
+        myForm.reset();
     }
 });
 
-function Book(title, author, isRead) {
-    this.title = title;
-    this.author = author;
-    this.isRead = isRead;
+class Book {
+    constructor(title, author, isRead) {
+        this.title = title;
+        this.author = author;
+        this.isRead = isRead;
+    }
 }
 
 function toggleIsRead(index) {
