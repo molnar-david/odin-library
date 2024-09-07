@@ -20,6 +20,23 @@ document.getElementById("add-book-form").addEventListener("submit", (event) => {
     }
 });
 
+document.getElementById("add-book-btn").addEventListener("click", (event) => {
+    const title = document.getElementById("title");
+    const author = document.getElementById("author");
+
+    if (title.validity.valueMissing) {
+        title.setCustomValidity("Please enter a title.");
+    } else {
+        title.setCustomValidity("");
+    }
+        
+    if (author.validity.valueMissing) {
+        author.setCustomValidity("Please enter the name of the author.");
+    } else {
+        author.setCustomValidity("");
+    }
+});
+
 class Book {
     constructor(title, author, isRead) {
         this.title = title;
